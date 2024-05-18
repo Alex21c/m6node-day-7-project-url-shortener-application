@@ -1,0 +1,36 @@
+{
+  "name": "m6node-day-7-project-url-shortener-application",
+  "version": "1.0.0",
+  "description": "In this assignment, i have developed a URL shortener application that takes long URLs as input and generates shorter, more manageable links. The goal is to create a service that efficiently converts lengthy URLs into concise ones, making sharing and accessing links easier for users. My implementation should include key features such as generating unique short codes, redirecting users to the original URL, and tracking usage analytics. Through this assignment, i have learnt development, database management, and algorithmic considerations to build a robust and user-friendly URL shortening service.",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "nodemon index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex21c/m6node-day-7-project-url-shortener-application"
+  },
+  "keywords": [
+    "url shortner service",
+    "mern stack project",
+    "mvc framework",
+    "MongoDB",
+    "ExpressJS",
+    "ReactJS",
+    "NodeJS",
+    "alex21c"
+  ],
+  "author": "Abhishek kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alex21c/m6node-day-7-project-url-shortener-application/issues"
+  },
+  "homepage": "https://github.com/Alex21c/m6node-day-7-project-url-shortener-application#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.5",
+    "nanoid": "^5.0.7"
+  }
+}
