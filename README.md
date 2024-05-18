@@ -14,7 +14,7 @@
 + NodeJS for BackEnd
 + ReactJS for FrontEnd
 
-## ENV file
+## .env file
 ```javascript
 PORT=4000
 ```
