@@ -15,7 +15,7 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   
   // Connecting to DB
 
-    console.log(process.env.MONGODB_CONNECTION_STRING);
+    // console.log(process.env.MONGODB_CONNECTION_STRING);
     mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
     .then(()=>{ console.log('Connection Established with Database!');})
     .catch((error)=>{
@@ -36,9 +36,8 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
     server.use("/api/v1", AuthenticateUser, UrlShortenerRoutes);
   
     
-  
   // launching server
-    server.listen(PORT, (req, res)=>{
+    server.listen(PORT, ()=>{
       console.log(`Express Server is up and running at port ${PORT}`);
     });
 
