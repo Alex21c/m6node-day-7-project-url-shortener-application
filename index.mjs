@@ -4,6 +4,7 @@ import UserRoutes from './Routes/User.Routes.mjs';
 import UrlShortenerRoutes from './Routes/UrlShortener.Routes.mjs';
 import mongoose from 'mongoose';
 import AuthenticateUser from './Middlewares/AuthenticateUser.Middleware.mjs';
+import cors from 'cors';
 
 const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   try {
@@ -30,6 +31,11 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   // Allowing me to parse req.body
     server.use(express.json());
   
+  // Use the CORS middleware, such that from localhost i can make requests
+    server.use(cors({
+      origin: 'http://localhost:3000' // Allow requests from this origin
+    }));
+
   // Linking Routes
     server.use("/api/v1/user", UserRoutes);
     server.use("/", UrlShortenerRoutes);

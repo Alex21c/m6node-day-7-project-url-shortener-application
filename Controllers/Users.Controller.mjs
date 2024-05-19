@@ -65,7 +65,7 @@ const signUpUser= async (req, res)=>{
 
 }
 const signInUser= async(req, res)=>{  
-  console.log(req.body)
+  // console.log(req.body)
   try {
     // check if provided user email exit in DB?
       const result = await UserModel.find({
