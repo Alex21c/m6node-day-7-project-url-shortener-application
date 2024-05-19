@@ -8,7 +8,7 @@ import AuthenticateUser from './Middlewares/AuthenticateUser.Middleware.mjs';
 const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   try {
     console.log(process.env.MONGODB_CONNECTION_STRING);
-    mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
+    await mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
     .then(()=>{ console.log('Connection Established with Database!');})
     .catch((error)=>{
       console.log('ERROR: Unable to connect to DB');
