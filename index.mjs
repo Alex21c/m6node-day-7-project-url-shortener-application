@@ -3,7 +3,7 @@ import express from 'express';
 import UserRoutes from './Routes/User.Routes.mjs';
 import UrlShortenerRoutes from './Routes/UrlShortener.Routes.mjs';
 import mongoose from 'mongoose';
-
+import AuthenticateUser from './Middlewares/AuthenticateUser.Middleware.mjs';
 
 const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
 
@@ -31,8 +31,9 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   server.use(express.json());
 
 // Linking Routes
-  server.use(UserRoutes);
-  server.use(UrlShortenerRoutes);
+  server.use("/api/v1/user", UserRoutes);
+  server.use("/", UrlShortenerRoutes);
+  server.use("/api/v1", AuthenticateUser, UrlShortenerRoutes);
 
   
 

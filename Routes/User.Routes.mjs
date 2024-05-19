@@ -22,8 +22,8 @@ import UserController from '../Controllers/Users.Controller.mjs';
 
 const UserRoutes = express.Router();
 
-UserRoutes.post('/api/v1/user/sign-up', UserController.signUpUser);
+UserRoutes.post('/sign-up', UserController.signUpUser);
 
-UserRoutes.post('/api/v1/user/sign-in', UserController.signInUser);
+UserRoutes.post('/sign-in', UserController.signInUser);
 
 export default UserRoutes;

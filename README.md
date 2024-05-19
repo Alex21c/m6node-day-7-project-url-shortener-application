@@ -17,6 +17,7 @@
 ## ENV file
 ```javascript
 PORT=4000
+PRIVATE_KEY=CREATE_YOURS_OWN_PRIVATE_KEY_ANY_RANDOM_PLAIN_TEXT
 ```
 
 ## How to install and run in yours local machine

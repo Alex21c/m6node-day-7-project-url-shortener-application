@@ -19,7 +19,7 @@ import UrlShortenerController from '../Controllers/UrlShortener.Controller.mjs';
 
 const UrlShortenerRoutes = express.Router();
 
-UrlShortenerRoutes.post('/api/v1/short-url', UrlShortenerController.shortUrl);
+UrlShortenerRoutes.post('/short-url', UrlShortenerController.shortUrl);
 
 // additional APIs requests handling
 UrlShortenerRoutes.get('/:shortedURI', UrlShortenerController.redirectUser);

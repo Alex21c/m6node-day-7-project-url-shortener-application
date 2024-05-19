@@ -65,6 +65,7 @@ const shortUrl = async (req, res)=>{
 
     // just write to db
         jsonData.shortedURI = customBackHalf;
+        jsonData.generatedByWhichUser = req.body.userID;
         await writeShortedUrlToDB(UrlShortenerModel, jsonData);
         // send response back to client
         res.json({
