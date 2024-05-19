@@ -7,21 +7,21 @@ import AuthenticateUser from './Middlewares/AuthenticateUser.Middleware.mjs';
 
 const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   try {
-    console.log(process.env.MONGODB_CONNECTION_STRING);
-    await mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
-    .then(()=>{ console.log('Connection Established with Database!');})
-    .catch((error)=>{
-      console.log('ERROR: Unable to connect to DB');
-      console.log('Exiting...');
-      process.exit(1);
-    });
-  
    
   
   // Creating a express server
     let server = express();
     const PORT = process.env.PORT ? process.env.PORT : 3000;
   
+  // Connecting to DB
+
+    console.log(process.env.MONGODB_CONNECTION_STRING);
+    mongoose.connect(process.env.MONGODB_CONNECTION_STRING)
+    .then(()=>{ console.log('Connection Established with Database!');})
+    .catch((error)=>{
+      throw new Error('Unable to connect to DB');
+    });
+
   // Making a Database Connection
   
   // Middleware for logging errors
@@ -43,7 +43,7 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
     });
 
   } catch (error) {
-    console.log('Index.mjs ' + error.message)
+    console.log('Index.mjs ERROR: ' +  error.message)
   }
 
 
