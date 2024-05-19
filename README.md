@@ -14,7 +14,7 @@
 + NodeJS for BackEnd
 + ReactJS for FrontEnd
 
-## ENV file
+## .env file
 ```javascript
 PORT=4000
 PRIVATE_KEY=CREATE_YOURS_OWN_PRIVATE_KEY_ANY_RANDOM_PLAIN_TEXT
