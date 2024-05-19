@@ -17,7 +17,8 @@
 ## .env file
 ```javascript
 PORT=4000
-PRIVATE_KEY=CREATE_YOURS_OWN_PRIVATE_KEY_ANY_RANDOM_PLAIN_TEXT
+PRIVATE_KEY= Create your own private key any random plain text will work
+MONGODB_CONNECTION_STRING= get it from Yours MongoDB Atlas account (https://cloud.mongodb.com/)
 ```
 
 ## How to install and run in yours local machine
