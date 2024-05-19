@@ -7,7 +7,8 @@ export default function AuthenticateUser(req, res, next){
     if(!authToken){
       res.status(401).json({
         success: false,
-        message: "Invalid email or password !"
+        message: "Invalid email or password !",
+        isAuthTokenValid: false
       });        
       return;
     }
@@ -22,7 +23,8 @@ export default function AuthenticateUser(req, res, next){
     console.log(error.message)
     res.status(401).json({
       success: false,
-      message: "Invalid email or password !"
+      message: "Invalid email or password !",
+      isAuthTokenValid: false
     });        
     return;    
   }

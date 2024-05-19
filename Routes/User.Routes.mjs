@@ -18,12 +18,15 @@
  */
 import express from 'express';
 import UserController from '../Controllers/Users.Controller.mjs';
-
+import AuthenticateUser from '../Middlewares/AuthenticateUser.Middleware.mjs';
 
 const UserRoutes = express.Router();
 
 UserRoutes.post('/sign-up', UserController.signUpUser);
 
 UserRoutes.post('/sign-in', UserController.signInUser);
+
+UserRoutes.post('/validate-auth-token', AuthenticateUser, UserController.validateAuthToken);
+
 
 export default UserRoutes;

@@ -16,13 +16,24 @@
 
 ## .env file
 ```javascript
+USER_SESSION_EXPIRES_AFTER="2 days"
 PORT=4000
 PRIVATE_KEY= Create your own private key any random plain text will work
 MONGODB_CONNECTION_STRING= get it from Yours MongoDB Atlas account (https://cloud.mongodb.com/)
-
 ```
 ### Note: 
 create a database named ```urlShortnerApp``` and specify it in the MongoDB Connection string inside .env 
+USER_SESSION_EXPIRES_AFTER can have following valid values
+'2 days'  // 172800000
+'1d'      // 86400000
+'10h'     // 36000000
+'2.5 hrs' // 9000000
+'2h'      // 7200000
+'1m'      // 60000
+'5s'      // 5000
+'1y'      // 31557600000
+
+
 ```javascript
 <abcStringGenertedByMongoDB>mongodb.net/urlShortnerApp?retryWrites=true<xyzStringGenertedByMongoDB>
 ```

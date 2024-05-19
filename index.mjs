@@ -5,7 +5,7 @@ import UrlShortenerRoutes from './Routes/UrlShortener.Routes.mjs';
 import mongoose from 'mongoose';
 import AuthenticateUser from './Middlewares/AuthenticateUser.Middleware.mjs';
 import cors from 'cors';
-
+import morgan from 'morgan';
 const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   try {
    
@@ -13,7 +13,10 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
   // Creating a express server
     let server = express();
     const PORT = process.env.PORT ? process.env.PORT : 3000;
-  
+
+    // Middleware for logging errors
+    server.use(morgan('dev'));
+
   // Connecting to DB
 
     // console.log(process.env.MONGODB_CONNECTION_STRING);
@@ -25,8 +28,7 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
 
   // Making a Database Connection
   
-  // Middleware for logging errors
-    // server.use(morgan('combined'));
+
   
   // Allowing me to parse req.body
     server.use(express.json());

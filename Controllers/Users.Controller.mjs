@@ -4,10 +4,11 @@ import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 
 
+
 function generateJWT(userID){
   return jwt.sign({
     _id: userID
-  }, process.env.PRIVATE_KEY, { expiresIn: '30 days' });
+  }, process.env.PRIVATE_KEY, { expiresIn: process.env.USER_SESSION_EXPIRES_AFTER});
 
 }
 
@@ -65,7 +66,8 @@ const signUpUser= async (req, res)=>{
 
 }
 const signInUser= async(req, res)=>{  
-  // console.log(req.body)
+  console.log(req.method);
+  console.log(req.body);
   try {
     // check if provided user email exit in DB?
       const result = await UserModel.find({
@@ -108,11 +110,17 @@ const signInUser= async(req, res)=>{
 
 }
 
+// Helps to validate the auth token
+const validateAuthToken= async(req, res)=>{
+  res.json({
+    isAuthTokenValid: true
+  });
+}
 
 const UserController = {
-  UserModel,
   signUpUser,
-  signInUser
+  signInUser,
+  validateAuthToken
 };
 export default UserController;
 
