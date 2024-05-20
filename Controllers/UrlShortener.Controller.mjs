@@ -2,8 +2,8 @@ import { json } from "express";
 import UrlShortenerModel from "../Models/UrlShortener.Model.mjs";
 import { nanoid } from "nanoid";
 
-function getServerURL(req){
-  return "http://" + req.headers.host;
+function getServerURL(req){  
+  return "https://" + req.headers.host;
 }
 
 async function doesCustomBackHalfAlreadyExist(UrlShortenerModel, customBackHalf, req){
