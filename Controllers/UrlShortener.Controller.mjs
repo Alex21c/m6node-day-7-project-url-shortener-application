@@ -28,6 +28,63 @@ async function incrementTrafficCounterByOne(UrlShortenerModel, documentID, curre
     traffic: currentTraffic+1
   });
 }
+const deleteADocumentCreatedByThisCurrentUser = async (req, res)=>{
+  // query would be, find a document whose shortURI is matching provided shortURI and that URI is created by the provided user
+  const query = {
+    generatedByWhichUser: req.body.userID,
+    shortedURI: req.body.shortedURI
+  };
+  const response = await UrlShortenerModel.findOneAndDelete(query);
+  console.log(response);
+  if(!response){
+    // unable to delete it
+      res.status(404).json({
+        success: false,
+        message: "Not Found : Unable to Delete It"
+      });
+      return;    
+  }
+
+  res.json({
+    success: true,
+    message: "Successfully Deleted shortenedURL Document"
+  });
+
+  
+}
+
+const getAllUrlsCreatedByCurrentUser = async (req, res)=>{
+  // ask db are there any urls created by current user ?
+  const response =  await UrlShortenerModel.find({
+    generatedByWhichUser: req.body.userID
+  });
+  if(response.length===0){
+    res.status(404).json({
+      success: false,
+      message: "No URLs Found!"
+    });
+    return;
+  }
+  // send sanitized response
+  // console.log(response);
+  let sanitizedResponse = response.map(document => {
+    return {
+      traffic: document.traffic,
+      shortedURI: document.shortedURI,
+      shortedURL: getServerURL(req) + "/" + document.shortedURI,
+      destinationURL: document.destinationURL
+    }
+  });
+  // console.log(sanitizedResponse);
+  res.json({
+    success: true,
+    body: sanitizedResponse
+  });
+
+
+}
+
+
 const shortUrl = async (req, res)=>{
   // first generate the short url from the destination url
     let {destinationURL, customBackHalf} = req.body;
@@ -103,7 +160,9 @@ const redirectUser = async (req, res)=>{
 
 const UrlShortenerController = {
   shortUrl,
-  redirectUser
+  redirectUser,
+  getAllUrlsCreatedByCurrentUser,
+  deleteADocumentCreatedByThisCurrentUser
 };
 
 export default UrlShortenerController;

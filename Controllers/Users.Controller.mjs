@@ -44,16 +44,23 @@ const signUpUser= async (req, res)=>{
       }
 
     req.body.accountCreatedOn = new Date();
+    req.body.lastLogin = new Date();
     // encrypting the password
       req.body.passwordHash  = await generateHashedPassword(req.body.password);
       
     // storing into DB      
       const objUserModel = new UserModel(req.body);
+
+      // console.log(objUserModel);
       await objUserModel.save();
-    
+
+  
+  // return the jwt token
+    const jwtToken = generateJWT(objUserModel._id.toHexString()); 
     res.json({
       success: true,
-      message: "User Account created successfully !"
+      message: "User Account created successfully !",
+      'auth-token': jwtToken
     });
     
   } catch (error) {
@@ -66,8 +73,8 @@ const signUpUser= async (req, res)=>{
 
 }
 const signInUser= async(req, res)=>{  
-  console.log(req.method);
-  console.log(req.body);
+  // console.log(req.method);
+  // console.log(req.body);
   try {
     // check if provided user email exit in DB?
       const result = await UserModel.find({
@@ -91,6 +98,12 @@ const signInUser= async(req, res)=>{
         return;
       }
       
+    // update last login field
+      const jsonObj={
+        lastLogin: new Date()
+      }
+      await UserModel.findByIdAndUpdate(result[0]._id, jsonObj);
+
     // return the jwt token
       const jwtToken = generateJWT(result[0]._id.toHexString());  
       
