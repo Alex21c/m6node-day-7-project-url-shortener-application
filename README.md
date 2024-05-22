@@ -23,7 +23,11 @@ MONGODB_CONNECTION_STRING= get it from Yours MongoDB Atlas account (https://clou
 ```
 ### Note: 
 create a database named ```urlShortnerApp``` and specify it in the MongoDB Connection string inside .env 
-USER_SESSION_EXPIRES_AFTER can have following valid values
+```javascript
+<abcStringGenertedByMongoDB>mongodb.net/urlShortnerApp?retryWrites=true<xyzStringGenertedByMongoDB>
+```
+## To specify custom expiration values of session
+```javascript
 '2 days'  // 172800000
 '1d'      // 86400000
 '10h'     // 36000000
@@ -32,16 +36,101 @@ USER_SESSION_EXPIRES_AFTER can have following valid values
 '1m'      // 60000
 '5s'      // 5000
 '1y'      // 31557600000
-
-
-```javascript
-<abcStringGenertedByMongoDB>mongodb.net/urlShortnerApp?retryWrites=true<xyzStringGenertedByMongoDB>
 ```
+
 ## How to install and run in yours local machine
 ```bash
 npm install
 npm run start
 ```
+
+## Postman API Endpoints file
+[Postman API Endpoints.json](m6node-day-7-project-url-shortener-application.postman_collection.json)
+
+
+## API End Points : User
+### 1. Sign Up
+```
+POST /api/v1/user/sign-up
+```
+#### REQUEST
+```javascript
+{
+	email: String email address of user
+	password: String Hashed password for sign-in
+	firstName : String first name of user
+	lastName : String last name of user
+}
+```
+#### RESPONSE
+```javascript
+{
+    "success": true,
+    "message": "User Account created successfully !",
+    "auth-token": "JWT Auth Token"
+}
+```
+### 2. Sign In
+```
+POST /api/v1/user/sign-in
+```
+#### REQUEST
+```javascript
+{
+ email: String email address of user
+ password: String Hashed password for sign-in
+}
+```
+#### RESPONSE
+```javascript
+{
+    "success": true,
+    "message": "JWT Auth Token"
+}
+
+```
+### 3. Validate Auth Token
+```
+POST /api/v1/user/validate-auth-token
+```
+#### REQUEST
+```javascript
+Headers
+{ auth-token : JWT Auth Token as received after sign in or up}
+```
+#### RESPONSE
+```javascript
+{
+    "isAuthTokenValid": true
+}
+```
+
+## API End Points : UrlShortener
+### 1. Short URL
+```
+/api/v1/short-url
+```
+#### REQUEST
+```javascript
+HEADERS
+{
+'auth-token' : "JWT Auth Token as provided earlier after sign-in or up"
+}
+BODY
+ {
+   destinationURL: say https://github.com/Alex21c
+   customBackHalf: (optional) say alex21cGitHub
+ }
+```
+#### RESPONSE
+```javascript
+{
+    "success": true,
+    "message": "User Account created successfully !",
+    "auth-token": "JWT Auth Token"
+}
+```
+
 
 ## Tech. Stack Used:
 + [MongoDB](https://www.mongodb.com/) 
