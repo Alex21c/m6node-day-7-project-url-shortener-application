@@ -108,7 +108,7 @@ Headers
 ## API End Points : UrlShortener
 ### 1. Short URL
 ```
-/api/v1/short-url
+POST /api/v1/short-url
 ```
 #### REQUEST
 ```javascript
@@ -130,6 +130,48 @@ BODY
     "auth-token": "JWT Auth Token"
 }
 ```
+### 2. Access shorted URL
+```
+GET /URLBackHalf
+```
+#### REQUEST
+NA
+#### RESPONSE
+Redirect user to desination url
+
+```
+### 3. Get all URLs shorted by current User
+```
+POST /get-all-urls-created-by-current-user
+```
+#### REQUEST
+```javascript
+HEADERS
+{
+'auth-token' : "JWT Auth Token as provided earlier after sign-in or up"
+}
+
+```
+#### Example RESPONSE
+```javascript
+{
+    "success": true,
+    "body": [
+        {
+            "traffic": 1,
+            "shortedURI": "OCdweRUXv",
+            "shortedURL": "https://domainName/OCdweRUXv",
+            "destinationURL": "https://github.com/Alex21c"
+        },
+        {
+            "traffic": 0,
+            "shortedURI": "OjMdXDCxV",
+            "shortedURL": "https://domainName/OjMdXDCxV",
+            "destinationURL": "https://classroom.google.com/"
+        }
+}
+```
+
 
 
 ## Tech. Stack Used:
