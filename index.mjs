@@ -34,13 +34,13 @@ const PRJ_NAME = "m6node-day-7-project-url-shortener-application";
     server.use(express.json());
   
   // Use the CORS middleware, such that from localhost i can make requests
-    server.use(cors({
-      origin: 'http://localhost:3000' // Allow requests from this origin
-    }));
-
     // server.use(cors({
-    //   origin: 'https://frontend-m6node-day-7-project-url-shortener-application.vercel.app' // Allow requests from this origin
+    //   origin: 'http://localhost:3000' // Allow requests from this origin
     // }));
+
+    server.use(cors({
+      origin: 'https://frontend-m6node-day-7-project-url-shortener-application.vercel.app' // Allow requests from this origin
+    }));
 
 
   // Linking Routes
