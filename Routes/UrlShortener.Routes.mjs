@@ -27,6 +27,7 @@ UrlShortenerRoutes.post('/delete-a-document-created-by-this-current-user', Authe
 
 // additional APIs requests handling
 UrlShortenerRoutes.get('/:shortedURI', UrlShortenerController.redirectUser);
+UrlShortenerRoutes.get('/handshake/hello', UrlShortenerController.handshakeHello);
 
 
 

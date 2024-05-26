@@ -157,12 +157,19 @@ const redirectUser = async (req, res)=>{
 
 
 }
+const handshakeHello = async (req, res)=>{
+  res.json({
+    success: true,
+    message: "hi there!"
+  });
+}
 
 const UrlShortenerController = {
   shortUrl,
   redirectUser,
   getAllUrlsCreatedByCurrentUser,
-  deleteADocumentCreatedByThisCurrentUser
+  deleteADocumentCreatedByThisCurrentUser,
+  handshakeHello
 };
 
 export default UrlShortenerController;
