@@ -172,6 +172,20 @@ HEADERS
 }
 ```
 
+### 4. Perform handshake with the server, in case render has spun off the instance, it should re mount it
+#### REQUEST
+```
+GET /handshake/hello
+```
+
+#### RESPONSE
+
+```javascript
+{
+    "success": true,
+    "message": "hi there!"
+}
+```
 
 
 ## Tech. Stack Used:
