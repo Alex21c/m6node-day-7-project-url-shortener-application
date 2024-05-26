@@ -139,7 +139,7 @@ NA
 #### RESPONSE
 Redirect user to desination url
 
-```
+
 ### 3. Get all URLs shorted by current User
 ```
 POST /get-all-urls-created-by-current-user
