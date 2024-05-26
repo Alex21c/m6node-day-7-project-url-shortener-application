@@ -218,6 +218,27 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "handshake",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://m6node-day-7-project-url-shortener.onrender.com/handshake/hello",
+					"protocol": "https",
+					"host": [
+						"m6node-day-7-project-url-shortener",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"handshake",
+						"hello"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
